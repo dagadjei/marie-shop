@@ -55,7 +55,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="{% static 'https://mdbootstrap.com/docs/jquery/' %}" target="_blank">
-        <strong class="blue-text">MDB</strong>
+        <strong class="blue-text">Marie's Collection</strong>
       </a>
 
       <!-- Collapse -->
@@ -75,15 +75,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% static 'https://mdbootstrap.com/docs/jquery/' %}" target="_blank">About MDB</a>
+            <a class="nav-link waves-effect" href="{% static 'https://mdbootstrap.com/docs/jquery/' %}" target="_blank">About MC</a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% static 'https://mdbootstrap.com/docs/jquery/getting-started/download/' %}"
-              target="_blank">Free download</a>
+              target="_blank">Deliveries</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}"  target="_blank">Free
-              tutorials</a>
+            <a class="nav-link waves-effect" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}"  target="_blank">Support
+              </a>
           </li>
         </ul>
 
@@ -231,7 +231,7 @@
                   available. Create your own, stunning website.</strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+              <a target="_blank" href="{% static 'https://mdbootstrap.com/education/bootstrap/' %}" class="btn btn-outline-white btn-lg">Start
                 free tutorial
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
@@ -326,7 +326,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+                <img src='https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg'  class="card-img-top"
                   alt="">
                 <a>
                   <div class="mask rgba-white-slight"></div>
@@ -766,7 +766,7 @@
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
-      © 2019 Copyright:
+      © 2020 Copyright:
       <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
     </div>
     <!--/.Copyright-->
@@ -776,11 +776,11 @@
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
   <!-- Initializations -->
