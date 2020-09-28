@@ -4,6 +4,52 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+
+
+def register_page(request):
+    if request.user.is_authenticated:
+        return redirect('shop:home')
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, "Account created for " + user)  
+                return redirect('shop:login')
+    
+        context = {'form': form}
+        return render(request, 'accounts/register.html', context)
+
+def login_page(request):
+    if request.user.is_authenticated:
+        return redirect('shop:home')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user= authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('shop:home')
+            else:
+                messages.info(request, 'username OR password is incorrect')
+
+        context = {}
+        return render(request, 'accounts/login.html', context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('shop:login')
+
 
 def item_list(request):
     context = {
@@ -22,8 +68,14 @@ def product(request):
 
 class HomeView(ListView):
     model = Item
+    paginate_by = 10
     template_name = 'home-page.html'
 
+class OrderSummaryView(ListView):
+    model = Order
+    template_name = 'order-summary.html'
+
+    
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product-page.html"
@@ -42,42 +94,49 @@ def add_to_cart(request, slug):
         if order.items.filter(item__slug=item.slug).exists():
             order_item.quantity += 1
             order_item.save()
-            messages.info(request, "Added to Cart")
+            messages.info(request, "Item Quantity Updated")
         else:
-            messages.info(request, "Added to Cart")
             order.items.add(order_item)
+            messages.info(request, "Added to Cart")
+            return redirect("shop:product", slug=slug)
 
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(user=request.user, ordered_date=ordered_date)
-        order.items.add(order_item) 
+        order.items.add(order_item)
+        messages.info(request, "Added to Cart") 
+        return redirect("shop:product", slug=slug)
     return redirect("shop:product", slug=slug)
 
 def remove_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
-        user=request.user, 
+        user=request.user,
         ordered=False
     )
     if order_qs.exists():
         order = order_qs[0]
-        #check previous occurance of order
+        # check if the order item is in the order
         if order.items.filter(item__slug=item.slug).exists():
-            order_item =  OrderItem.objects.filter(
-                item=item, 
+            order_item = OrderItem.objects.filter(
+                item=item,
                 user=request.user,
                 ordered=False
             )[0]
             order.items.remove(order_item)
-        else:
-            #message to say no item as such exists
+            order_item.delete()
+            messages.info(request, "This item was removed from your cart.")
             return redirect("shop:product", slug=slug)
-       
+        else:
+            messages.info(request, "This item was not in your cart")
+            return redirect("shop:product", slug=slug)
     else:
-        #message to say no order
+        messages.info(request, "You do not have an active order")
         return redirect("shop:product", slug=slug)
-
-    return redirect("shop:product", slug=slug)
+    
+ 
+ 
+   
 
 
 
