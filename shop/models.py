@@ -18,6 +18,7 @@ LABEL_CHOICES = (
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
+    item_photo = models.ImageField(upload_to='item_photos/', null=True, blank=True)
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=1)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
@@ -29,6 +30,14 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.item_photo.url
+        except:
+            url = ''
+        return url
 
     def get_absolute_url(self):
         return reverse("shop:product", kwargs={
@@ -45,6 +54,8 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+        
+
 
 
 
@@ -60,6 +71,21 @@ class OrderItem(models.Model):
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"  
 
+    def get_total_item_price(self):
+        return self.quantity * self.item.price
+
+    
+    def get_total_discount_item_price(self):
+        return self.quantity * self.item.discount_price   
+
+    def get_amount_saved(self):
+        return self.get_total_item_price() - self.get_total_discount_item_price()
+
+    def get_final_price(self):
+        if self.item.discount_price:
+            return self.get_total_discount_item_price()
+        return self.get_total_item_price()
+
 class Order(models.Model):
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -72,3 +98,10 @@ class Order(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_total(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_final_price()
+        return total
+

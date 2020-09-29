@@ -107,7 +107,7 @@
         <ul class="navbar-nav nav-flex-icons">
           
           <li class="nav-item">
-            <a class="nav-link waves-effect">
+            <a href="{% url 'shop:order-summary' %}" class="nav-link waves-effect">
               <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
@@ -250,7 +250,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src='https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg'  class="card-img-top"
+                <img src="{{ item.imageURL }}"  class="card-img-top"
                   alt="">
                 <a href="{{ item.get_absolute_url }}">
                   <div class="mask rgba-white-slight"></div>
