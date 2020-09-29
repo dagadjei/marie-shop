@@ -31,7 +31,7 @@ def register_page(request):
 
 def login_page(request):
     if request.user.is_authenticated:
-        return redirect('shop:home')
+        return redirect('shop:homepage')
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
@@ -40,7 +40,7 @@ def login_page(request):
             user= authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('shop:home')
+                return redirect('shop:homepage')
             else:
                 messages.info(request, 'username OR password is incorrect')
 
