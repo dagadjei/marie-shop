@@ -104,18 +104,28 @@
         </ul>
 
         <!-- Right -->
+        
         <ul class="navbar-nav nav-flex-icons">
-          
+        {% if request.user.is_authenticated %}  
           <li class="nav-item">
             <a href="{% url 'shop:order-summary' %}" class="nav-link waves-effect">
               <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
-              <i class="fas fa-shopping-cart"></i>
+              <i class="fas fa-shopping-bag"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
+        {% else %}
+        
+          <li class="nav-item">
+            <a href="{% url 'shop:register' %}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
+              <i class="fas fa-shopping-bag"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          
 
-          
-          
+        {% endif %} 
         </ul>
 
       </div>
