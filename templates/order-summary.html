@@ -52,12 +52,12 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light pink scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="{% url 'shop:homepage' %}">
-        <strong class="blue-text">Marie's Collection</strong>
+        <strong class="white-text">Marie's Collection</strong>
       </a>
 
       <!-- Collapse -->
@@ -72,31 +72,31 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="/">Home
+            <a class="nav-link waves-effect white-text" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="/">
+            <a class="nav-link waves-effect white-text" href="/">
                 Welcome, {{ request.user }}
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'shop:logout' %}">Logout</a>
+            <a class="nav-link waves-effect white-text" href="{% url 'shop:logout' %}">Logout</a>
           </li>
 
           {% else %}
 
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'shop:login' %}">Login</a>
+            <a class="nav-link waves-effect white-text" href="{% url 'shop:login' %}">Login</a>
           </li>
 
 
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'shop:register' %}">Signup</a>
+            <a class="nav-link waves-effect white-text" href="{% url 'shop:register' %}">Signup</a>
           </li>
           
           {% endif %}
@@ -109,7 +109,7 @@
           <li class="nav-item">
             <a class="nav-link waves-effect">
               <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
-              <i class="fas fa-shopping-cart"></i>
+              <i class="fas fa-shopping-bag"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
@@ -170,6 +170,8 @@
                         
                         
                     </td>
+                   
+                    
                 
                 </tr>
             {% empty %}
@@ -177,9 +179,10 @@
                     <td colspan="5">Your Cart is Empty</td>
                 </tr>
                 <tr>
-                    <td colspan="5"><a class="btn btn-primary float-right ml-2" href="/">Continue Shopping</a></td>
+                    <td colspan="5"><a class="btn btn-primary float-right" href="/">Continue Shopping</a></td>
                     
                 </tr>
+
 
             {% endfor %}
 
@@ -191,28 +194,33 @@
             
             </tr>
             <tr>
-                <td colspan="5"><a class="btn btn-primary float-right ml-2" href="/">Continue Shopping</a></td>
-                <td colspan="5"><a class="btn btn-warning float-right" href="/checkout/">Checkout</a></td>
+                <td colspan="5">
+                <a class="btn btn-primary float-right ml-2" href="/">Continue Shopping</a>
+                <a class="btn btn-warning float-right" href="/checkout/">Checkout</a>
+                </td>   
             </tr>
             
           
-        </tbody>
+      
             {% endif %}
+        </tbody>
         </table>
+        </div>
+        
     </div>
   </div>
 
 
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+  <footer class="page-footer text-center pink font-small mt-4 wow fadeIn">
 
     <!--Call to action-->
     <div class="pt-4">
       <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
+        role="button">Contact Us
+        <i class="fas fa-mobile-alt"></i>
       </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Contact
+        Developer
         <i class="fas fa-graduation-cap ml-2"></i>
       </a>
     </div>
@@ -259,7 +267,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3">
       © 2020 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank">MarieCollection </a>
     </div>
     <!--/.Copyright-->
 
