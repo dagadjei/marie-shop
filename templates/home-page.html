@@ -52,12 +52,12 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light pink scrolling-navbar" >
-    <div class="container" >
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="{% url 'shop:homepage' %}">
-        <strong class="white-text">Marie Collection</strong>
+        <strong class="blue-text">Marie's Collection</strong>
       </a>
 
       <!-- Collapse -->
@@ -71,32 +71,32 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active ">
-            <a class="nav-link waves-effect white-text" href="/">Home
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link waves-effect white-text" href="/">
+            <a class="nav-link waves-effect" href="/">
                 Welcome, {{ request.user }}
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link waves-effect white-text" href="{% url 'shop:logout' %}">Logout</a>
+            <a class="nav-link waves-effect" href="{% url 'shop:logout' %}">Logout</a>
           </li>
 
           {% else %}
 
           <li class="nav-item">
-            <a class="nav-link waves-effect white-text" href="{% url 'shop:login' %}">Login</a>
+            <a class="nav-link waves-effect" href="{% url 'shop:login' %}">Login</a>
           </li>
 
 
           <li class="nav-item">
-            <a class="nav-link waves-effect white-text" href="{% url 'shop:register' %}">Signup</a>
+            <a class="nav-link waves-effect" href="{% url 'shop:register' %}">Signup</a>
           </li>
           
           {% endif %}
@@ -109,7 +109,7 @@
           <li class="nav-item">
             <a href="{% url 'shop:order-summary' %}" class="nav-link waves-effect">
               <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
-              <i class="fas fa-shopping-bag"></i>
+              <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
@@ -191,7 +191,7 @@
     <div class="container">
 
       <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-light mdb-color pink lighten-3 mt-3 mb-5">
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
 
         <!-- Navbar brand -->
         <span class="navbar-brand">Categories:</span>
@@ -281,6 +281,9 @@
                     {% endif %}
                   </strong>
                 </h4>
+                <a href="{{ item.get_absolute_url }}" class="btn btn-primary btn-md my-0 p" >View
+                  
+                </a>
 
               </div>
               <!--Card content-->
@@ -336,16 +339,16 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center pink font-small mt-4 wow fadeIn">
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
     <!--Call to action-->
     <div class="pt-4">
       <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Contact Us
-        <i class="fas fa-mobile-alt ml-2"></i>
+        role="button">Download MDB
+        <i class="fas fa-download ml-2"></i>
       </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Contact
-        Developer
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
+        free tutorial
         <i class="fas fa-graduation-cap ml-2"></i>
       </a>
     </div>
@@ -392,7 +395,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3">
       © 2020 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank">MarieCollection</a>
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
     </div>
     <!--/.Copyright-->
 
