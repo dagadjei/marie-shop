@@ -125,12 +125,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-#STATIC_ROOT = ''
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static'),
 #STATIC_URL = '/static/'
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static'),
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
     
-#]
 
 
 
@@ -147,7 +145,7 @@ LOGOUT_URL = 'logout'
 # CRISPY FORMS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-STATIC_ROOT = 'staticfiles'
+
 """
 AWS_ACCESS_KEY_ID = 'AKIAVLG55FRLYDL6DM6Y'
 AWS_SEECRET_ACCESS_KEY = 'pZDwMibRwo6hiMUSilgnWHnr2p8+6xiIEO6eFuuL'
