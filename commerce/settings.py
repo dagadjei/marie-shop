@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'w92jrw+u((x23@dyffi%y0xa$2=gx3_478j)740x!g6$^b_ygu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mariecollection.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -147,6 +147,7 @@ LOGOUT_URL = 'logout'
 # CRISPY FORMS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+STATIC_ROOT = 'staticfiles'
 """
 AWS_ACCESS_KEY_ID = 'AKIAVLG55FRLYDL6DM6Y'
 AWS_SEECRET_ACCESS_KEY = 'pZDwMibRwo6hiMUSilgnWHnr2p8+6xiIEO6eFuuL'
