@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from commerce.aws.conf import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -124,40 +125,46 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+#STATIC_ROOT = ''
+#STATIC_URL = '/static/'
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'static'),
     
-]
+#]
 
 
 
 #MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 )
-SITE_ID = 1
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = 'logout'
 
 # CRISPY FORMS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-AWS_ACCESS_KEY_ID = 'AKIAVLG55FRL34UHWYD6'
-AWS_SEECRET_ACCESS_KEY = '02MzpqrwCEoc2W/A1OPbmLAgLUD3Yxxtm9i7rFKH'
-AWS_STORAGE_BUCKET_NAME = 'marie-web'
+"""
+AWS_ACCESS_KEY_ID = 'AKIAVLG55FRLYDL6DM6Y'
+AWS_SEECRET_ACCESS_KEY = 'pZDwMibRwo6hiMUSilgnWHnr2p8+6xiIEO6eFuuL'
+AWS_STORAGE_BUCKET_NAME = 'final-collection'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 AWS_S3_FILE_OVERWRITE = False
+AWS_LOCATION = 'static'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    
+]
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = 'https://%s/%s/'    % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+AWS_DEFAULT_ACL = None
 
-AWS_DEFAULT_ACL = 'public-read'
-
-DEFAULT_FILE_STORAGE = 'commerce.storages.MediaStore'
-
+#DEFAULT_FILE_STORAGE = 'commerce.storages.MediaStore'
+"""
 
