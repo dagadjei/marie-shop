@@ -1,1 +1,1 @@
-web: gunicorn marie-shop.wsgi
+web: gunicorn marie-shop.wsgi —-log-file -
