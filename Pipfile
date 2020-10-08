@@ -13,6 +13,7 @@ django-storages = "*"
 boto = "*"
 boto3 = "*"
 lock = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
