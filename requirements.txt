@@ -6,10 +6,12 @@ bower==0.0.0
 certifi==2020.6.20
 chardet==3.0.4
 defusedxml==0.6.0
+dj-database-url==0.5.0
 Django==3.1.1
 django-allauth==0.42.0
 django-crispy-forms==1.9.2
 django-extensions @ git+https://github.com/django-extensions/django-extensions.git@9a126b64aea9f77748442ea59555e766e68ad7c3
+django-heroku==0.3.1
 django-storages==1.10.1
 djangorestframework==3.12.1
 drf-extensions @ git+https://github.com/chibisov/drf-extensions.git@002a67cec4159cbd691580b6e7fa42a701f0d2dd
@@ -18,6 +20,7 @@ idna==2.10
 jmespath==0.10.0
 oauthlib==3.1.0
 Pillow==7.2.0
+psycopg2==2.8.6
 python-dateutil==2.8.1
 python3-openid==3.2.0
 pytz==2020.1
