@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'storages',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +145,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
@@ -157,9 +158,10 @@ LOGOUT_URL = 'logout'
 # CRISPY FORMS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+SITE_ID = 1
 
 
-"""
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -169,7 +171,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-"""
+
 
 
 
@@ -195,7 +197,6 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = 'https://%s/%s/'    % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 AWS_DEFAULT_ACL = None
-
-#DEFAULT_FILE_STORAGE = 'commerce.storages.MediaStore'
 """
+# DEFAULT_FILE_STORAGE = '/media/'
 django_heroku.settings(locals())
