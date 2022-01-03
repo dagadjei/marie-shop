@@ -157,10 +157,15 @@
           <!--Content-->
           <div class="p-4">
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <a href="">
                 <span class="badge purple mr-1">{{ object.get_category_display }}</span>
-              </a>
+            </a> -->
+            <!-- <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">{{ object.description }}</span>
+            </a> -->
+            <p><strong>{{ object.description }}</strong></p>
               
             </div>
 
@@ -176,9 +181,9 @@
               {% endif %}
             </p>
 
-            <p class="lead font-weight-bold">Description</p>
+            <!-- <p class="lead font-weight-bold">Description</p> -->
 
-            <p>{{ object.description }}</p>
+            <!-- <p>{{ object.description }}</p> -->
             {% if request.user.is_authenticated %}
             
             <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p" >Add to cart

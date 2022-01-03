@@ -32,19 +32,19 @@
   background-color: #b1bace !important; }
 
 .mdb-color.lighten-3 {
-  background-color: #929fba !important; }
+  background-color: #9A34C6 !important; }
 
 .mdb-color.lighten-2 {
-  background-color: #7283a7 !important; }
+  background-color: #9A34C6 !important; }
 
 .mdb-color.lighten-1 {
-  background-color: #59698d !important; }
+  background-color: #9A34C6 !important; }
 
 .mdb-color {
-  background-color: #45526e !important; }
+  background-color: #9A34C6 !important; }
 
 .mdb-color-text {
-  color: #45526e !important; }
+  color: #9A34C6 !important; }
 
 .rgba-mdb-color-slight,
 .rgba-mdb-color-slight:after {
@@ -3908,7 +3908,7 @@ a.waves-effect, a.waves-light {
 
 .btn {
   margin: 0.375rem;
-  color: inherit;
+  color: purple;
   text-transform: uppercase;
   word-wrap: break-word;
   white-space: normal;
