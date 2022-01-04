@@ -1,2 +1,2 @@
 # marie-shop
-ecommerce
+E-commerce Application made with #Django as backend and #React frontend.
