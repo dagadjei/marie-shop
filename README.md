@@ -1,4 +1,12 @@
 # marie-shop
-E-commerce Application made with #Django as backend and #React frontend.
-Execution of Redux and Tailwind CSS
-Payment Integration with Stripe and Paystack for local Payments(Mobile Money)
+E-commerce Application made with a payment integration system.
+
+## Tech Stack
+- Python, Django
+- JavaScript, React, Redux
+- Tailwind CSS
+
+## Also includes
+- Stripe - International Payment System
+- Paystack - Local Payment System
+- Dynamic Generation Of Invoices
