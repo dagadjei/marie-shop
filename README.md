@@ -6,7 +6,7 @@ E-commerce Application made with a payment integration system.
 - JavaScript, React, Redux
 - Tailwind CSS
 
-## Also includes
+## Additional Features
 - Stripe - International Payment System
 - Paystack - Local Payment System
 - Dynamic Generation Of Invoices
